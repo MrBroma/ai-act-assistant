@@ -1,0 +1,1 @@
+"""Build a grounded prompt from the retrieved chunks and call the LLM to produce a cited answer."""
