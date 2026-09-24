@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw data: source PDF is downloaded by a script, not versioned
+data/raw/*
+!data/raw/.gitkeep
+
+# Derived data: extracted text, chunks
+data/processed/*
+!data/processed/.gitkeep
+
+# Vector store (ChromaDB persistence, fully regenerable)
+data/vectorstore/
+
+# MLflow tracking
+mlruns/
+mlartifacts/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
