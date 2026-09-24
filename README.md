@@ -60,13 +60,13 @@ These principles will later be translated into quantitative and qualitative eval
 flowchart LR
 
     subgraph Offline["Offline: ingestion"]
-        PDF["EU AI Act PDF<br/>(EUR-Lex)"]
-        EXTRACT["Text extraction"]
+        HTML["EU AI Act HTML<br/>(EUR-Lex)"]
+        EXTRACT["HTML parsing"]
         CLEAN["Text cleaning"]
         CHUNK["Chunking + metadata"]
         EMBED["Embedding model"]
 
-        PDF --> EXTRACT
+        HTML --> EXTRACT
         EXTRACT --> CLEAN
         CLEAN --> CHUNK
         CHUNK --> EMBED
@@ -113,7 +113,7 @@ This separation also makes the system easier to test, to debug (a wrong answer c
 | **Corpus language** | English | Keeps the repository, evaluation questions, prompts, and documentation consistent, with access to a broad range of embedding models. |
 | **Package manager** | `uv` | A single tool manages both the Python version and dependencies, and the committed `uv.lock` guarantees an identical environment locally, in CI, and in Docker. |
 | **Project structure** | `src/` layout | Tests run against the installed package rather than files in the working directory, so packaging errors are caught early. |
-| **Source document** | Downloaded by script | Only what cannot be regenerated is versioned. The PDF is fetched from the official EUR-Lex source, which keeps the repository light and the ingestion reproducible. |
+| **Source document** | EUR-Lex HTML, downloaded by script. Chosen over the PDF after comparing samples: the HTML preserves the legal structure (recitals, articles, annexes) and avoids page artifacts such as headers, footers and footnotes interleaved with the text. |
 | **Vector database** | ChromaDB | Lightweight, local-first vector store, well suited to a prototype while keeping the retrieval architecture explicit. |
 | **Embedding model** | To be decided (Day 4) | Will be selected empirically based on retrieval metrics. |
 | **LLM** | To be decided (Day 6) | Will be selected based on answer quality, cost, latency, and the open-source/free constraint of the project. |
