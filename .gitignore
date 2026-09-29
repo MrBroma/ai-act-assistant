@@ -217,7 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Raw data: source PDF is downloaded by a script, not versioned
+# Raw data: source XHTML retrieved from Cellar (see configs/source.toml), not versioned
 data/raw/*
 !data/raw/.gitkeep
 
