@@ -1,0 +1,17 @@
+from ai_act_assistant.ingestion.models import RawDocument
+
+
+def test_raw_document_computes_sha256_of_empty_content():
+    doc = RawDocument(b"")
+
+    assert doc.sha256 == (
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    )
+
+
+def test_raw_document_computes_sha256_of_content():
+    doc = RawDocument(b"abc")
+
+    assert doc.sha256 == (
+        "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    )
