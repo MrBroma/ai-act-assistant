@@ -92,6 +92,7 @@ def test_load_real_source_manifest():
 
     assert manifest.celex == "02024R1689-20260727"
     assert manifest.accept_header == "application/xhtml+xml"
+    assert manifest.accept_language == "eng"
     assert manifest.raw_path == Path("data/raw/ai_act_02024R1689-20260727_eng.xhtml")
 
 
